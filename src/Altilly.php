@@ -15,9 +15,4 @@ class Altilly
     {
         $this->adapter = $adapter;
     }
-
-    public function account(): Account
-    {
-        return new Account($this->adapter);
-    }
 }
