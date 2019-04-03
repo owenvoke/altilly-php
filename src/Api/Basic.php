@@ -9,16 +9,16 @@ use function array_map;
 use function json_decode;
 use function sprintf;
 
-class Basic extends AbstractApi
+final class Basic extends AbstractApi
 {
     public function getSymbols(): array
     {
-        $response = $this->adapter->get(sprintf('%s/public/symbols', $this->endpoint));
+        $response = $this->adapter->get(sprintf('%s/public/symbol', $this->endpoint));
 
         $data = json_decode($response);
 
-        return array_map(static function ($market) {
-            return new SymbolEntity($market);
+        return array_map(static function ($symbol) {
+            return new SymbolEntity($symbol);
         }, $data);
     }
 
